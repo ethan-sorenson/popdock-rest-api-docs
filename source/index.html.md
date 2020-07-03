@@ -11,11 +11,12 @@ toc_footers:
 
 includes:
   - v2/introduction
-  - v2/authentication
   - v2/administration
+  - v2/users
   - v2/connectors
-  - v2/listData
+  - v2/entities
   - v2/developer
+  - v2/data
 
 search: true
 
