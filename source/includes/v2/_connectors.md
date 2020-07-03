@@ -71,7 +71,7 @@ List all entities(lists) currently setup for a connector in the Popdock instance
 	</div>
 </div>
 
-> To retrieve a list of all entities, use this code:
+> To retrieve a list of all connector entities, use this code:
 
 ```shell
 curl GET "https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entity" \
@@ -127,7 +127,7 @@ List all entity groups currently setup for a connector in the Popdock instance.
 	</div>
 </div>
 
-> To retrieve a list of all entity groups, use this code:
+> To retrieve a list of connector entity groups, use this code:
 
 ```shell
 curl GET "https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entityGroup" \

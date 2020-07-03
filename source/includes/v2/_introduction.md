@@ -21,7 +21,7 @@ Region | App Url | API Url
 North America | data.popdock.com | api.popdock.com
 Europe | data-weu.popdock.com | api-weu.popdock.com
 
-# Authentication
+## Authentication
 
 The Popdock API uses user tokens for authentication. New authentication tokens can be geenrated in Popodock from any user's profile page.
 

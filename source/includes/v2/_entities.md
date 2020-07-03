@@ -49,51 +49,6 @@ print(response.text.encode('utf8'))
     }
 ]
 ```
-## List All Entity Groups
-
-List all entity groups currently setup in the Popdock instance.
-
-### HTTP request ###
-
-<div class="api-endpoint">
-	<div class="endpoint-data">
-		<i class="label label-get">GET</i>
-		<h6>https://{{ApiUrl}}/api/v2/entityGroup</h6>
-	</div>
-</div>
-
-> To retrieve a list of all entity groups, use this code:
-
-```shell
-curl GET "https://{{ApiUrl}}/api/v2/entityGroup" \
-  -H 'Accept: application/json' \
-  -H 'Authorization: Bearer {{token}}'
-```
-
-```python
-import requests
-
-url = "https://{{ApiUrl}}/api/v2/entityGroup"
-headers = {
-  'Content-Type': 'application/json',
-  'Authorization': 'Bearer {{token}}'
-}
-
-response = requests.request("GET", url, headers=headers)
-
-print(response.text.encode('utf8'))
-```
-> The above command returns the following json:
-
-```json
-[
-    {
-        "EntityGroupId": "ca0017fc-a7e5-46a2-81cf-016914b727c1",
-        "Name": "Financial",
-        "ConnectorId": "2f58ad94-6edf-49ca-b2f8-12ef49a0674e"
-    }
-]
-```
 ## List Entity Fields
 
 List all fields available on a specific entity.
