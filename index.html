@@ -316,13 +316,45 @@
                   <li>
                     <a href="#getting-started" class="toc-h2 toc-link" data-title="Getting Started">Getting Started</a>
                   </li>
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#administration" class="toc-h1 toc-link" data-title="Administration">Administration</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                    <a href="#list-accounts" class="toc-h2 toc-link" data-title="List Accounts">List Accounts</a>
+                  </li>
+                  <li>
+                    <a href="#list-tags" class="toc-h2 toc-link" data-title="List Tags">List Tags</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-entity-groups" class="toc-h2 toc-link" data-title="List All Entity Groups">List All Entity Groups</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-entity-favorites" class="toc-h2 toc-link" data-title="List All Entity Favorites">List All Entity Favorites</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-entity-actions" class="toc-h2 toc-link" data-title="List All Entity Actions">List All Entity Actions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-all-users" class="toc-h2 toc-link" data-title="List All Users">List All Users</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-teams" class="toc-h2 toc-link" data-title="List All Teams">List All Teams</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-team-members" class="toc-h2 toc-link" data-title="List All Team Members">List All Team Members</a>
                   </li>
               </ul>
           </li>
@@ -350,9 +382,6 @@
                     <a href="#list-all-entities" class="toc-h2 toc-link" data-title="List All Entities">List All Entities</a>
                   </li>
                   <li>
-                    <a href="#list-all-entity-groups" class="toc-h2 toc-link" data-title="List All Entity Groups">List All Entity Groups</a>
-                  </li>
-                  <li>
                     <a href="#list-entity-fields" class="toc-h2 toc-link" data-title="List Entity Fields">List Entity Fields</a>
                   </li>
                   <li>
@@ -369,6 +398,40 @@
                   </li>
                   <li>
                     <a href="#list-entity-actions" class="toc-h2 toc-link" data-title="List Entity Actions">List Entity Actions</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#developer" class="toc-h1 toc-link" data-title="Developer">Developer</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-widgets" class="toc-h2 toc-link" data-title="List Widgets">List Widgets</a>
+                  </li>
+                  <li>
+                    <a href="#list-widget-parameters" class="toc-h2 toc-link" data-title="List Widget Parameters">List Widget Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#list-api-endpoints" class="toc-h2 toc-link" data-title="List API Endpoints">List API Endpoints</a>
+                  </li>
+                  <li>
+                    <a href="#list-api-endpoint-parameters" class="toc-h2 toc-link" data-title="List API Endpoint Parameters">List API Endpoint Parameters</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#data" class="toc-h1 toc-link" data-title="Data">Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-entity-data" class="toc-h2 toc-link" data-title="Get Entity Data">Get Entity Data</a>
+                  </li>
+                  <li>
+                    <a href="#get-favorite-data" class="toc-h2 toc-link" data-title="Get Favorite Data">Get Favorite Data</a>
+                  </li>
+                  <li>
+                    <a href="#get-endpoint-data" class="toc-h2 toc-link" data-title="Get Endpoint Data">Get Endpoint Data</a>
+                  </li>
+                  <li>
+                    <a href="#get-query-data" class="toc-h2 toc-link" data-title="Get Query Data">Get Query Data</a>
                   </li>
               </ul>
           </li>
@@ -416,7 +479,7 @@
 <td>api-weu.popdock.com</td>
 </tr>
 </tbody></table>
-<h1 id='authentication'>Authentication</h1>
+<h2 id='authentication'>Authentication</h2>
 <p>The Popdock API uses user tokens for authentication. New authentication tokens can be geenrated in Popodock from any user&#39;s profile page.</p>
 
 <p>The token will passed as a Bearer Token header with all api requests.</p>
@@ -557,7 +620,356 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 <td>Internal Server Error -- We had a problem processing the request. Try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='connectors'>Connectors</h1>
+<h1 id='administration'>Administration</h1>
+<p>The administration endpoints provide broad endpoints for retrieving information the can be used later for filtering further requests. </p>
+<h2 id='list-accounts'>List Accounts</h2>
+<p>List all accounts in which the authenticated user is a member.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/account</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of accounts, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/account"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/account"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"AccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5fdbbcf-ae1d-9874-8072-655d134cd4c7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EU demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InternalUse"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-tags'>List Tags</h2>
+<p>List all tags setup in the Popdock instance.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/tag</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of tags, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/tag"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/tag"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"TagId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faa12615-7f5d-4dc1-a675-0253c810efbe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customers"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22b6ee7-230d-4b8d-8e39-f5ca45409efd"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-entity-groups'>List All Entity Groups</h2>
+<p>List all entity groups currently setup in the Popdock instance.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/entityGroup</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all entity groups, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entityGroup"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entityGroup"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0017fc-a7e5-46a2-81cf-016914b727c1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Financial"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-entity-favorites'>List All Entity Favorites</h2>
+<p>List all entity favorites currently setup in the Popdock instance.</p>
+<h3 id='http-request-4'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/favorite</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all entity favorites, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/favorite"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/favorite"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"FavoriteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d1c085c8-9f16-4146-b6f5-cde2772810a5"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo Favorite"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22b6ee7-230d-4b8d-8e39-f5ca45409efd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd5d635d-d0c5-4b57-a685-13d9017214eb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customers"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ItemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customers"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ItemSingular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Customers"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"Connector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dynamics GP"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamics-gp"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"CreatedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-03T09:33:56.963"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"MaxRecords"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ShowRecordCount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ViewType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CategoryFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e0d04d41-18fa-4c2b-a879-1f39f14a4718"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ValueFieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e00ba833-f2de-4da2-8393-4da1792eacc3"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"MaxCategories"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ChartType"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"SummaryMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ChartSort"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"TextFormat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"TextShowHeaders"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"TextRemoveBlanks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"Data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.popdock.com/api/v2/favorite/d1c085c8-9f16-4146-b6f5-cde2772810a5/data"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-entity-actions'>List All Entity Actions</h2>
+<p>List all entity actions currently setup in the Popdock instance.</p>
+<h3 id='http-request-5'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/action</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all entity actions, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/action"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/action"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ActionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99b029eb-c5fa-4ed2-b17c-022a5b97caef"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open return order"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConfirmationButton"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CancelButton"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3bc28181-ed8e-4e7d-856e-f74e5226866d"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"403dc704-baaa-4400-8b80-ac8b3b71ba2f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ActionType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ActionMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Icon"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h1 id='users'>Users</h1><h2 id='list-all-users'>List All Users</h2>
+<p>List all users currently setup in the Popdock instance.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/user</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all users, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/user"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/user"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22b6ee7-230d-4b8d-8e39-f5ca45409efd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EU"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eu.demo@eonesolutions.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-05T11:04:11"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-02T14:42:58.55"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"EmailVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EU demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DisplayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EU demo"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DisplayEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eu.demo@eonesolutions.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-teams'>List All Teams</h2>
+<p>List all teams currently setup in the Popdock instance.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/team</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all teams, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/team"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/team"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"TeamId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87592bc6-f970-4517-bbf3-1b47a1c3aa35"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"AccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5fdbbcf-ae1d-4cb6-8072-655d134cd4c7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Admin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Administration"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-team-members'>List All Team Members</h2>
+<p>List all team members currently setup in the Popdock instance.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/team/{{TeamId}}/member</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all team members, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/team/{{TeamId}}/member"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/team/{{TeamId}}/member"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"TeamMemberId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18916060-a98f-4691-a996-d88a572cdc8c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"TeamId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87592bc6-f970-4517-bbf3-1b47a1c3aa35"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22b6ee7-230d-4b8d-8e39-f5ca45409efd"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h1 id='connectors'>Connectors</h1>
 <p>The connector endpoints can be used to retrieve data about the currently configured connectors in Popdock.</p>
 <h2 id='list-connectors'>List Connectors</h2>
 <p>List all connectors currently setup in the Popdock instance.</p>
@@ -619,7 +1031,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </div>
 
 <blockquote>
-<p>To retrieve a list of all entities, use this code:</p>
+<p>To retrieve a list of all connector entities, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entity"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
@@ -668,7 +1080,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </div>
 
 <blockquote>
-<p>To retrieve a list of all entity groups, use this code:</p>
+<p>To retrieve a list of connector entity groups, use this code:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entityGroup"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
@@ -776,47 +1188,9 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"ItemSingular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo line"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div><h2 id='list-all-entity-groups'>List All Entity Groups</h2>
-<p>List all entity groups currently setup in the Popdock instance.</p>
-<h3 id='http-request-2'>HTTP request</h3>
-<div class="api-endpoint">
-    <div class="endpoint-data">
-        <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entityGroup</h6>
-    </div>
-</div>
-
-<blockquote>
-<p>To retrieve a list of all entity groups, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entityGroup"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entityGroup"</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns the following json:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0017fc-a7e5-46a2-81cf-016914b727c1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Financial"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='list-entity-fields'>List Entity Fields</h2>
 <p>List all fields available on a specific entity.</p>
-<h3 id='http-request-3'>HTTP request</h3>
+<h3 id='http-request-2'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
@@ -862,7 +1236,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='list-entity-default-fields'>List Entity Default Fields</h2>
 <p>List the default fields as setup on a specific connector entity.</p>
-<h3 id='http-request-4'>HTTP request</h3>
+<h3 id='http-request-3'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
@@ -907,7 +1281,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='list-entity-favorites'>List Entity Favorites</h2>
 <p>List all favorites on a connector entity.</p>
-<h3 id='http-request-5'>HTTP request</h3>
+<h3 id='http-request-4'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
@@ -959,7 +1333,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='list-entity-restrictions'>List Entity Restrictions</h2><h2 id='list-entity-relationships'>List Entity Relationships</h2>
 <p>List all Relationships(detail) on a connector entity.</p>
-<h3 id='http-request-6'>HTTP request</h3>
+<h3 id='http-request-5'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
@@ -1011,7 +1385,7 @@ Tokens are user specific, they are the security equivalent of a user accessing t
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div><h2 id='list-entity-actions'>List Entity Actions</h2>
 <p>List all actions on a connector entity.</p>
-<h3 id='http-request-7'>HTTP request</h3>
+<h3 id='http-request-6'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
@@ -1051,6 +1425,565 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"ActionType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ActionMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
         </span><span class="nl">"Icon"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h1 id='developer'>Developer</h1>
+<p>Retrieve information from the developer section of Popdock.</p>
+<h2 id='list-widgets'>List Widgets</h2>
+<p>List all widgets currently setup in the Popdock instance.</p>
+
+<p>There are currently are 6 types of widget.</p>
+
+<table><thead>
+<tr>
+<th>Number</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Application</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Favorite</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Summary</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Single record</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sidebar</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cards</td>
+</tr>
+</tbody></table>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/widget</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of widgets, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/widget"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/widget"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"WidgetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37e76b3a-e3a9-4b92-1234-1e6bf9e1853c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"AccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"e5fdbbcf-ae1d-4cb6-1234-655d134cd4c7"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC Demo Items"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a453ca61-72ee-487b-123-c3a54424d350"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c66e231-fcaa-4db1-a8f5-c8c3853f2103"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Height"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Width"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"HeightType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"WidthType"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"325fe36a-805a-4a89-4212-a960d525d17b"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b823d076-fa9a-1234-b978-590983e2c754"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b22b6ee7-230d-4b8d-8e39-f5ca45409efd"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OmvnN6njkkuonx5r-eGFPA"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-widget-parameters'>List Widget Parameters</h2>
+<p>List all widget parameters for a defined widget</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/widget/{{WidgetId}}/parameter</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of parameters, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/widget/{{WidgetId}}/parameter"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/widget/{{WidgetId}}/parameter"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"WidgetParameterId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ceff8252-3af1-4de6-a1dc-8497bc76ab49"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"WidgetId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37e76b3a-e3a9-4b92-1234-1e6bf9e1853c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"no"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"FieldId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9aadcb63-3fca-487a-bcab-4e4975385a8f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-api-endpoints'>List API Endpoints</h2>
+<p>List all API endpoints defined in Popdock.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/endpoint</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of API endpoints, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/endpoint"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/endpoint"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"EndpointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31434eeb-79b3-48a2-86a0-2c689198a199"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-api-endpoint-parameters'>List API Endpoint Parameters</h2>
+<p>List parameters for an API endpoint defined in Popdock.</p>
+<h3 id='http-request-4'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/endpoint/{{EndpointId}}/parameters</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of parameters, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/endpoint/{{EndpointId}}/parameters"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/endpoint/{{EndpointId}}/parameters"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"EndpointId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"da488562-8800-4720-b88e-709edd2efd4d"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERP Data"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Entity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4c1a8b08-01f1-43af-987e-1384e4f279bc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merge Sales Invoices"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ItemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merge Sales Invoices"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ItemSingular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Merge Sales Invoice"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"Company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"CompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a477ff7d-f9eb-4f3d-bc64-8d834f03ab93"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRONUS US"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='data'>Data</h1>
+<p>The Data endpoints can be used to retireve the data from any Popdock list. Samples of the different methods of retrieving the data is below.</p>
+
+<p>There are 4 data endpoints available:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Get Entity Data</td>
+<td>A simple quick method to pull the default fields</td>
+</tr>
+<tr>
+<td>Get Favorite Data</td>
+<td>User friendly method to use the Popdock inteface to create endpoints</td>
+</tr>
+<tr>
+<td>Get Endpoint Data</td>
+<td>Building on Favorites by allowing custom parameters</td>
+</tr>
+<tr>
+<td>Get Query Data</td>
+<td>Most advanced method where the query is built at run-time</td>
+</tr>
+</tbody></table>
+<h2 id='get-entity-data'>Get Entity Data</h2>
+<p>Get data from the default fields on the </p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/data?format=json&company={{CompanyId}}</h6>
+    </div>
+</div>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>false</td>
+<td>Specifies the response format the available options are: csv, xml, json</td>
+</tr>
+<tr>
+<td>company</td>
+<td>true</td>
+<td>Required field for which company to query</td>
+</tr>
+<tr>
+<td>MaxRecords</td>
+<td>false</td>
+<td>Default MaxRecords is 100</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+By default the endpoints only return 100 records. Only the default fields on the entity will be returned.
+</aside>
+
+<blockquote>
+<p>To retrieve a all data, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/data?format=json&amp;company={{CompanyId}}"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/data?format=json&amp;company={{CompanyId}}"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Customernumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11728"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fireworks OnTheRoof"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='get-favorite-data'>Get Favorite Data</h2>
+<p>Get data returned from a favorite. This endpoint includes any customizations included in the favorite.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/favorite/{{FavoriteId}}/data?format=json</h6>
+    </div>
+</div>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>false</td>
+<td>Specifies the response format the available options are: csv, xml, json</td>
+</tr>
+<tr>
+<td>MaxRecords</td>
+<td>false</td>
+<td>Default MaxRecords is 100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>To retrieve a all data, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/favorite/{{FavoriteId}}/data?format=json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/favorite/{{FavoriteId}}/data?format=json"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Customernumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11728"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fireworks OnTheRoof"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='get-endpoint-data'>Get Endpoint Data</h2>
+<p>Get data returned from a an API endpoint as defined in the developer section of Popdock.</p>
+
+<p>The main strength of this method is custom defined parameters can be used.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/favorite/TestApi?format=json&MaxRecords=10000&myParameter=myParameterValue</h6>
+    </div>
+</div>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>format</td>
+<td>false</td>
+<td>Specifies the response format the available options are: csv, xml, json</td>
+</tr>
+<tr>
+<td>MaxRecords</td>
+<td>false</td>
+<td>Default MaxRecords is 100</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>To retrieve a all data, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/favorite/TestApi?format=json&amp;MaxRecords=10000&amp;myParameter=myParameterValue"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/favorite/TestApi?format=json&amp;MaxRecords=10000&amp;myParameter=myParameterValue"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Customernumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11728"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fireworks OnTheRoof"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='get-query-data'>Get Query Data</h2>
+<p>Query data while providing additional information </p>
+
+<p>The main strength of this method is flexibility. </p>
+<h3 id='http-request-4'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">POST</i>
+        <h6>https://{{ApiUrl}}/api/v2/query</h6>
+    </div>
+</div>
+<h3 id='body-objects'>Body Objects</h3>
+<p>The body of the query command contains </p>
+
+<table><thead>
+<tr>
+<th>Object</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Id</td>
+<td>GUID</td>
+<td>Unique Identifier for the entity to use in the query</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>String</td>
+<td>Specifies the response format the available options are: csv, xml, json</td>
+</tr>
+<tr>
+<td>Query</td>
+<td>Object</td>
+<td>Object contianing the query parameters</td>
+</tr>
+<tr>
+<td>Fields</td>
+<td>Array</td>
+<td>List of fields to be returned by the query</td>
+</tr>
+<tr>
+<td>Companies</td>
+<td>Array</td>
+<td>List of companies to include in the query</td>
+</tr>
+<tr>
+<td>Restrictions</td>
+<td>Array</td>
+<td>List of restrictions</td>
+</tr>
+<tr>
+<td>OrderBy</td>
+<td>Array</td>
+<td>List of fields to use for ordering the data</td>
+</tr>
+<tr>
+<td>MaxRecords</td>
+<td>Number</td>
+<td>Specifies the maximum number of records returned</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>To query for data, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl POST <span class="s2">"https://{{ApiUrl}}/api/v2/query"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "Id": "c9412916-32e2-4e51-bbe5-dc6e9422b74a",
+        "Format": "json",
+        "Query": {
+            "Fields": [
+                {
+                    "EntityFieldId": "b699b355-1b0e-4cdb-9cda-f2ccdc20418c"
+                },
+                {
+                    "EntityFieldId": "7e2f9774-cf1e-494c-801b-c0a67286f2ea"
+                }
+            ],
+            "Companies": [
+                {
+                    "CompanyId": "06d0c3e3-b52f-47ae-a2c4-c379494805ea"
+                },
+                {
+                    "CompanyId": "a477ff7d-f9eb-4f3d-bc64-8d834f03ab93"
+                }
+            ],
+            "Restrictions": [],
+            "OrderBy": [],
+            "MaxRecords": 10000
+        }
+    }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/query"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+<span class="n">payload</span> <span class="o">=</span> 
+<span class="p">{</span>
+    <span class="s">"Id"</span><span class="p">:</span> <span class="s">"c9412916-32e2-4e51-bbe5-dc6e9422b74a"</span><span class="p">,</span>
+    <span class="s">"Format"</span><span class="p">:</span> <span class="s">"json"</span><span class="p">,</span>
+    <span class="s">"Query"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"Fields"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s">"EntityFieldId"</span><span class="p">:</span> <span class="s">"b699b355-1b0e-4cdb-9cda-f2ccdc20418c"</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s">"EntityFieldId"</span><span class="p">:</span> <span class="s">"7e2f9774-cf1e-494c-801b-c0a67286f2ea"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s">"Companies"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s">"CompanyId"</span><span class="p">:</span> <span class="s">"06d0c3e3-b52f-47ae-a2c4-c379494805ea"</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s">"CompanyId"</span><span class="p">:</span> <span class="s">"a477ff7d-f9eb-4f3d-bc64-8d834f03ab93"</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s">"Restrictions"</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s">"OrderBy"</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s">"MaxRecords"</span><span class="p">:</span> <span class="mi">10000</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">payload</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Customernumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11728"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fireworks OnTheRoof"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
