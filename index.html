@@ -316,13 +316,15 @@
                   <li>
                     <a href="#getting-started" class="toc-h2 toc-link" data-title="Getting Started">Getting Started</a>
                   </li>
-                  <li>
-                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
-                  </li>
               </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#connectors" class="toc-h1 toc-link" data-title="Connectors">Connectors</a>
@@ -331,16 +333,24 @@
                     <a href="#list-connectors" class="toc-h2 toc-link" data-title="List Connectors">List Connectors</a>
                   </li>
                   <li>
-                    <a href="#list-all-entities" class="toc-h2 toc-link" data-title="List All Entities">List All Entities</a>
-                  </li>
-                  <li>
                     <a href="#list-connector-entities" class="toc-h2 toc-link" data-title="List Connector Entities">List Connector Entities</a>
                   </li>
                   <li>
-                    <a href="#list-all-entity-groups" class="toc-h2 toc-link" data-title="List All Entity Groups">List All Entity Groups</a>
+                    <a href="#list-connector-entity-groups" class="toc-h2 toc-link" data-title="List Connector Entity Groups">List Connector Entity Groups</a>
                   </li>
                   <li>
-                    <a href="#list-connector-entity-groups" class="toc-h2 toc-link" data-title="List Connector Entity Groups">List Connector Entity Groups</a>
+                    <a href="#list-connector-companies" class="toc-h2 toc-link" data-title="List Connector Companies">List Connector Companies</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#entities" class="toc-h1 toc-link" data-title="Entities">Entities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-all-entities" class="toc-h2 toc-link" data-title="List All Entities">List All Entities</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-entity-groups" class="toc-h2 toc-link" data-title="List All Entity Groups">List All Entity Groups</a>
                   </li>
                   <li>
                     <a href="#list-entity-fields" class="toc-h2 toc-link" data-title="List Entity Fields">List Entity Fields</a>
@@ -358,13 +368,7 @@
                     <a href="#list-entity-relationships" class="toc-h2 toc-link" data-title="List Entity Relationships">List Entity Relationships</a>
                   </li>
                   <li>
-                    <a href="#list-connector-entity-groups-2" class="toc-h2 toc-link" data-title="List Connector Entity Groups">List Connector Entity Groups</a>
-                  </li>
-                  <li>
-                    <a href="#list-connector-companies" class="toc-h2 toc-link" data-title="List Connector Companies">List Connector Companies</a>
-                  </li>
-                  <li>
-                    <a href="#list-all-actions" class="toc-h2 toc-link" data-title="List All Actions">List All Actions</a>
+                    <a href="#list-entity-actions" class="toc-h2 toc-link" data-title="List Entity Actions">List Entity Actions</a>
                   </li>
               </ul>
           </li>
@@ -412,6 +416,17 @@
 <td>api-weu.popdock.com</td>
 </tr>
 </tbody></table>
+<h1 id='authentication'>Authentication</h1>
+<p>The Popdock API uses user tokens for authentication. New authentication tokens can be geenrated in Popodock from any user&#39;s profile page.</p>
+
+<p>The token will passed as a Bearer Token header with all api requests.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid token"</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><img src="images/User_Token-5f895695.jpg" alt="User Token" /></p>
+
+<aside class="notice">
+Tokens are user specific, they are the security equivalent of a user accessing the data through the Popdock web client.
+</aside>
 
 <p>All data fields in Popdock are configured to a data type. These types are denoted by a type field.</p>
 
@@ -542,20 +557,18 @@
 <td>Internal Server Error -- We had a problem processing the request. Try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='authentication'>Authentication</h1>
-<p>The Popdock API uses user tokens for authentication. New authentication tokens can be geenrated in Popodock from any user&#39;s profile page.</p>
-
-<p>The token will passed as a Bearer Token header with all api requests.</p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid token"</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><img src="images/User_Token-5f895695.jpg" alt="User Token" /></p>
-
-<aside class="notice">
-Tokens are user specific, they are the security equivalent of a user accessing the data through the Popdock web client.
-</aside>
 <h1 id='connectors'>Connectors</h1>
 <p>The connector endpoints can be used to retrieve data about the currently configured connectors in Popdock.</p>
 <h2 id='list-connectors'>List Connectors</h2>
+<p>List all connectors currently setup in the Popdock instance.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/connector</h6>
+    </div>
+</div>
+
 <blockquote>
 <p>To retrieve a list of connectors, use this code:</p>
 </blockquote>
@@ -595,58 +608,16 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all connectors currently setup in the Popdock instance.</p>
-<h3 id='http-request'>HTTP request</h3>
-<div class="api-endpoint">
-    <div class="endpoint-data">
-        <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/connector</h6>
-    </div>
-</div>
-<h2 id='list-all-entities'>List All Entities</h2>
-<blockquote>
-<p>To retrieve a list of all entities, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entity"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entity"</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns the following json:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77c92142-05e4-45db-bc87-001120461c88"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo lines"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001dae89-8baa-48c9-86ee-516502e49719"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c9c5ba6-f65c-4eec-9011-7a349f02d7bf"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ItemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo lines"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ItemSingular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo line"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all entities(lists) currently setup in the Popdock instance.</p>
+</span></code></pre></div><h2 id='list-connector-entities'>List Connector Entities</h2>
+<p>List all entities(lists) currently setup for a connector in the Popdock instance.</p>
 <h3 id='http-request-2'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entity</h6>
+        <h6>https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entity</h6>
     </div>
 </div>
-<h2 id='list-connector-entities'>List Connector Entities</h2>
+
 <blockquote>
 <p>To retrieve a list of all entities, use this code:</p>
 </blockquote>
@@ -686,54 +657,16 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all entities(lists) currently setup for a connector in the Popdock instance.</p>
+</span></code></pre></div><h2 id='list-connector-entity-groups'>List Connector Entity Groups</h2>
+<p>List all entity groups currently setup for a connector in the Popdock instance.</p>
 <h3 id='http-request-3'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entity</h6>
+        <h6>https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entityGroup</h6>
     </div>
 </div>
-<h2 id='list-all-entity-groups'>List All Entity Groups</h2>
-<blockquote>
-<p>To retrieve a list of all entity groups, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entityGroup"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entityGroup"</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns the following json:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0017fc-a7e5-46a2-81cf-016914b727c1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Financial"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all entity groups currently setup in the Popdock instance.</p>
-<h3 id='http-request-4'>HTTP request</h3>
-<div class="api-endpoint">
-    <div class="endpoint-data">
-        <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entityGroup</h6>
-    </div>
-</div>
-<h2 id='list-connector-entity-groups'>List Connector Entity Groups</h2>
 <blockquote>
 <p>To retrieve a list of all entity groups, use this code:</p>
 </blockquote>
@@ -762,16 +695,135 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all entity groups currently setup for a connector in the Popdock instance.</p>
-<h3 id='http-request-5'>HTTP request</h3>
+</span></code></pre></div><h2 id='list-connector-companies'>List Connector Companies</h2>
+<p>List all companies currently setup for a connector in the Popdock instance.</p>
+<h3 id='http-request-4'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/entityGroup</h6>
+        <h6>https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/company</h6>
     </div>
 </div>
-<h2 id='list-entity-fields'>List Entity Fields</h2>
+
+<blockquote>
+<p>To retrieve a list of all connector companies, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/company"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/connector/{{ConnectorId}}/company"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"CompanyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dadd9fe4-1819-42ed-a2e4-d4bf3f36bc40"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fabrikam, Inc."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"DatabaseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GPTWO"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h1 id='entities'>Entities</h1><h2 id='list-all-entities'>List All Entities</h2>
+<p>List all entities(lists) currently setup in the Popdock instance.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/entity</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all entities, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entity"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entity"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77c92142-05e4-45db-bc87-001120461c88"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo lines"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001dae89-8baa-48c9-86ee-516502e49719"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9c9c5ba6-f65c-4eec-9011-7a349f02d7bf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ItemName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo lines"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ItemSingular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase credit memo line"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-all-entity-groups'>List All Entity Groups</h2>
+<p>List all entity groups currently setup in the Popdock instance.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/entityGroup</h6>
+    </div>
+</div>
+
+<blockquote>
+<p>To retrieve a list of all entity groups, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entityGroup"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entityGroup"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"EntityGroupId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ca0017fc-a7e5-46a2-81cf-016914b727c1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Financial"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2f58ad94-6edf-49ca-b2f8-12ef49a0674e"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div><h2 id='list-entity-fields'>List Entity Fields</h2>
+<p>List all fields available on a specific entity.</p>
+<h3 id='http-request-3'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/field</h6>
+    </div>
+</div>
+
 <blockquote>
 <p>To retrieve a list of all defined fields on an entity, use this code:</p>
 </blockquote>
@@ -808,16 +860,16 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"Hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all fields available on a specific entity.</p>
-<h3 id='http-request-6'>HTTP request</h3>
+</span></code></pre></div><h2 id='list-entity-default-fields'>List Entity Default Fields</h2>
+<p>List the default fields as setup on a specific connector entity.</p>
+<h3 id='http-request-4'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/field</h6>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/default-field</h6>
     </div>
 </div>
-<h2 id='list-entity-default-fields'>List Entity Default Fields</h2>
+
 <blockquote>
 <p>To retrieve a list of default fields on an entity, use this code:</p>
 </blockquote>
@@ -853,16 +905,16 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"Hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List the default fields as setup on a specific connector entity.</p>
-<h3 id='http-request-7'>HTTP request</h3>
+</span></code></pre></div><h2 id='list-entity-favorites'>List Entity Favorites</h2>
+<p>List all favorites on a connector entity.</p>
+<h3 id='http-request-5'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/default-field</h6>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/favorite</h6>
     </div>
 </div>
-<h2 id='list-entity-favorites'>List Entity Favorites</h2>
+
 <blockquote>
 <p>To retrieve a list of all favorites on an entity, use this code:</p>
 </blockquote>
@@ -905,16 +957,16 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"TextRemoveBlanks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all favorites on a connector entity.</p>
-<h3 id='http-request-8'>HTTP request</h3>
+</span></code></pre></div><h2 id='list-entity-restrictions'>List Entity Restrictions</h2><h2 id='list-entity-relationships'>List Entity Relationships</h2>
+<p>List all Relationships(detail) on a connector entity.</p>
+<h3 id='http-request-6'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/favorite</h6>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/relationship</h6>
     </div>
 </div>
-<h2 id='list-entity-restrictions'>List Entity Restrictions</h2><h2 id='list-entity-relationships'>List Entity Relationships</h2>
+
 <blockquote>
 <p>To retrieve a list of Relationships(detail) on an entity, use this code:</p>
 </blockquote>
@@ -957,16 +1009,51 @@ Tokens are user specific, they are the security equivalent of a user accessing t
         </span><span class="nl">"TextRemoveBlanks"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>List all Relationships(detail) on a connector entity.</p>
-<h3 id='http-request-9'>HTTP request</h3>
+</span></code></pre></div><h2 id='list-entity-actions'>List Entity Actions</h2>
+<p>List all actions on a connector entity.</p>
+<h3 id='http-request-7'>HTTP request</h3>
 <div class="api-endpoint">
     <div class="endpoint-data">
         <i class="label label-get">GET</i>
-        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/relationship</h6>
+        <h6>https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/action</h6>
     </div>
 </div>
-<h2 id='list-connector-entity-groups-2'>List Connector Entity Groups</h2><h2 id='list-connector-companies'>List Connector Companies</h2><h2 id='list-all-actions'>List All Actions</h2>
+
+<blockquote>
+<p>To retrieve a list of actions on an entity, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl GET <span class="s2">"https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/action"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {{token}}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://{{ApiUrl}}/api/v2/entity/{{EntityId}}/action"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer {{token}}'</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf8'</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns the following json:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ActionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ce21c8ec-fc69-42dd-85c1-0281171bbbfe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Open item"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConfirmationButton"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"CancelButton"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"EntityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62c9dbd6-d457-4924-ab12-7fdc7b0867c0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ConnectorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"403dc704-baaa-4400-8b80-ac8b3b71ba2f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ActionType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ActionMethod"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"Icon"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
