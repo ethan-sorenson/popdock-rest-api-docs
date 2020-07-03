@@ -24,7 +24,9 @@ under the License.
 // GENERAL STUFF
 ////////////////////////////////////////////////////////////////////////////////
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");html {
-  font-family: sans-serif;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%
 }
@@ -171,7 +173,7 @@ html, body {
   .toc-list-h2 {
     display: none;
     background-color: $nav-subitem-bg;
-    font-weight: 500;
+    font-weight: normal;
   }
 
   .toc-h2 {
@@ -638,3 +640,5 @@ html, body {
 }
 @import 'lang-selector';
 @import 'api-endpoint';
+@import 'label';
+@import 'toc';

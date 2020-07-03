@@ -1,4 +1,4 @@
-# Errors
+## Errors
 
 The SmartConnect API uses the following error codes:
 
