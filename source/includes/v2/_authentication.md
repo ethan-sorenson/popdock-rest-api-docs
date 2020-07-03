@@ -4,7 +4,11 @@ The Popdock API uses user tokens for authentication. New authentication tokens c
 
 The token will passed as a Bearer Token header with all api requests.
 
-![User Token](https://imgur.com/oceuVEd)
+```json
+{"error": "Invalid token"}
+```
+
+![User Token](images/User_Token.jpg)
 
 <aside class="notice">
 Tokens are user specific, they are the security equivalent of a user accessing the data through the Popdock web client.

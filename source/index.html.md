@@ -2,7 +2,7 @@
 title: Popdock REST API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: Curl
+  - shell: cUrl
   - python: Python
 
 toc_footers:
@@ -11,8 +11,11 @@ toc_footers:
 
 includes:
   - v2/introduction
-  - errors
   - v2/authentication
+  - v2/administration
+  - v2/connectors
+  - v2/listData
+  - v2/developer
 
 search: true
 
