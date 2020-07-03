@@ -280,7 +280,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c97ce000.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-d86bc85b.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-3b29304a.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -297,7 +297,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-3008699c.png" class="logo" alt="" />
+      <img src="images/logo-708e0ed9.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">Curl</a>
               <a href="#" data-language-name="python">Python</a>
@@ -308,9 +308,6 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
-          <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
@@ -318,6 +315,12 @@
                   </li>
                   <li>
                     <a href="#getting-started" class="toc-h2 toc-link" data-title="Getting Started">Getting Started</a>
+                  </li>
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                  </li>
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
                   </li>
               </ul>
           </li>
@@ -333,7 +336,81 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='errors'>Errors</h1>
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Popdock API! The API can be used to remotely pull data from your Popodock Lists. Some of the core functions are:</p>
+
+<ul>
+<li>Retrieve lists of available connectors, lists, and favorites</li>
+<li>Query data from the list&#39;s data endpoints</li>
+</ul>
+<h2 id='requirements'>Requirements</h2>
+<p>To use this version of the REST API you will need the following:</p>
+
+<ul>
+<li>An active SaaS subscription for Popdock</li>
+<li>A valid user login to Popdock</li>
+</ul>
+<h2 id='getting-started'>Getting Started</h2>
+<p>The Popdock API is locked by region, ensure the correct base url is used</p>
+
+<table><thead>
+<tr>
+<th>Region</th>
+<th>App Url</th>
+<th>API Url</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>North America</td>
+<td>data.popdock.com</td>
+<td>api.popdock.com</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>data-weu.popdock.com</td>
+<td>api-weu.popdock.com</td>
+</tr>
+</tbody></table>
+<h2 id='errors'>Errors</h2>
+<blockquote>
+<p>Popdock REST API error example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid token"</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Popdock REST API error example:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favorite ID is missing or invalid"</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The SmartConnect API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem processing the request. Try again later.</td>
+</tr>
+</tbody></table>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/v3/coupons/&lt;id&gt;</h6>
+    </div>
+</div>
+<h2 id='errors'>Errors</h2>
 <p>The SmartConnect API uses the following error codes:</p>
 
 <table><thead>
@@ -355,54 +432,12 @@
 <td>Internal Server Error -- We had a problem with our server. Try again later.</td>
 </tr>
 </tbody></table>
-<h1 id='introduction'>Introduction</h1>
-<p>Welcome to the API API! The API can be used to remotely pull data from your Popodock Lists. Some of the core functions are:</p>
-
-<ul>
-<li>Retrieve lists of available connectors, lists, and favorites</li>
-<li>Query data from the list&#39;s data endpoints</li>
-</ul>
-<h2 id='requirements'>Requirements</h2>
-<p>To use this version of the REST API you will need the following:</p>
-
-<ul>
-<li>An active SaaS subscription for Popdock</li>
-<li>A valid user login to Popdock</li>
-</ul>
-<h2 id='getting-started'>Getting Started</h2>
-<p>Connecting to the API will require the following information.</p>
-
-<p>The Popdock API is locked by region, ensure the correct base url is used</p>
-
-<table><thead>
-<tr>
-<th>Region</th>
-<th>App Url</th>
-<th>API Url</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>North America</td>
-<td>data.popdock.com</td>
-<td>api.popdock.com</td>
-</tr>
-<tr>
-<td>Europe</td>
-<td>data-weu.popdock.com</td>
-<td>api-weu.popdock.com</td>
-</tr>
-</tbody></table>
-<h3 id='http-request'>HTTP request</h3>
-<div class="api-endpoint">
-    <div class="endpoint-data">
-        <i class="label label-get">GET</i>
-        <h6>/wp-json/wc/v3/coupons/&lt;id&gt;</h6>
-    </div>
-</div>
 <h1 id='authentication'>Authentication</h1>
-<p>The Popdock API uses user tokens for authentication. </p>
+<p>The Popdock API uses user tokens for authentication. New authentication tokens can be geenrated in Popodock from any user&#39;s profile page.</p>
 
-<p><a href="https://imgur.com/oceuVEd">User Token</a></p>
+<p>The token will passed as a Bearer Token header with all api requests.</p>
+
+<p><img src="https://imgur.com/oceuVEd" alt="User Token" /></p>
 
 <aside class="notice">
 Tokens are user specific, they are the security equivalent of a user accessing the data through the Popdock web client.
