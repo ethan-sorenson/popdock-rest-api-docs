@@ -283,13 +283,12 @@ html, body {
 }
 
 .lang-selector {
-  display: flex;
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
-  overflow-x: auto;
   a {
-    display: inline;
+    display: block;
+    float:left;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
@@ -637,3 +636,5 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
+@import 'lang-selector';
+@import 'api-endpoint';
