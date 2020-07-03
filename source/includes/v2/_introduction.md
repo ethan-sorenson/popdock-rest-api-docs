@@ -22,3 +22,12 @@ Region | App Url | API Url
 --------- | ------- | -----------
 North America | data.popdock.com | api.popdock.com
 Europe | data-weu.popdock.com | api-weu.popdock.com
+
+### HTTP request ###
+
+<div class="api-endpoint">
+	<div class="endpoint-data">
+		<i class="label label-get">GET</i>
+		<h6>/wp-json/wc/v3/coupons/&lt;id&gt;</h6>
+	</div>
+</div>
